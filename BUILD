@@ -17,7 +17,7 @@ py_test(
     srcs = ["//tests:test_math_utils.py"],  # FIXED
     deps = [
         "//src:math_utils_lib",
-        "@python_deps//pypi__pytest",
+        "@python_deps//:pytest",
     ],
 
 )

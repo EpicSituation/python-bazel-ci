@@ -4,7 +4,7 @@ py_test(
     srcs = ["test_math_utils.py"],
     deps = [
         "//src:math_utils_lib",
-        "@python_deps//pypi__pytest",
+        "@python_deps//:pytest",
     ],
 
 )
