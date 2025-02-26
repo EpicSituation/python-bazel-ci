@@ -1,4 +1,8 @@
-import pytest
+import sys
+import os
+
+# Add the project root to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from src.string_utils import reverse_string, is_palindrome, count_vowels
 
 def test_reverse_string():
