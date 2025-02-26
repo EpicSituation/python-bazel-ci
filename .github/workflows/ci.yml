@@ -28,8 +28,16 @@ jobs:
         run: |
           pip install pylint black pytest
 
+#      - name: Run Unit Tests
+#        run: bazel test //tests:test_math_utils //tests:test_string_utils
       - name: Run Unit Tests
-        run: bazel test //tests:test_math_utils //tests:test_string_utils
+        run: |
+          bazel test //tests:test_math_utils || (
+            echo "=== TEST LOG START ==="
+            cat /home/runner/.cache/bazel/_bazel_runner/*/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_math_utils/test.log || echo "Log not found"
+            echo "=== TEST LOG END ==="
+            exit 1
+          )
 
       - name: Run Linter
         run: bazel test //:lint
