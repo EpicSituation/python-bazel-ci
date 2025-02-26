@@ -18,6 +18,7 @@ py_test(
     deps = [
         "//src:math_utils_lib",
     ],
+        timeout = "short",  # Possible values: "short", "moderate", "long", "eternal"
 )
 
 py_test(

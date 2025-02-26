@@ -5,6 +5,7 @@ py_test(
     deps = [
         "//src:math_utils_lib",
     ],
+        timeout = "short",  # Possible values: "short", "moderate", "long", "eternal"
 )
 
 # Define a test for string_utils
