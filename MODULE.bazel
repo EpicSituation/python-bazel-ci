@@ -4,10 +4,10 @@ module(name = "python_bazel_ci")
 bazel_dep(name = "rules_python", version = "0.25.0")
 
 # Use pip extension for installing dependencies
-use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip_ext = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
 
-use_repo(pip, "python_deps")
+use_repo(pip_ext, "python_deps")
 
-pip.install(
+pip_ext.install(
     requirements = "@//:requirements.txt",
 )
