@@ -4,9 +4,9 @@ py_test(
     srcs = ["test_math_utils.py"],
     deps = [
         "//src:math_utils_lib",
+        "@python_deps//:pytest",
     ],
-        size = "small",
-        timeout = "short",  # Possible values: "short", "moderate", "long", "eternal"
+
 )
 
 # Define a test for string_utils

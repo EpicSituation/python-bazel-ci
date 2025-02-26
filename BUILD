@@ -17,9 +17,9 @@ py_test(
     srcs = ["//tests:test_math_utils.py"],  # FIXED
     deps = [
         "//src:math_utils_lib",
+        "@python_deps//:pytest",
     ],
-        size = "small",
-        timeout = "short",  # Possible values: "short", "moderate", "long", "eternal"
+
 )
 
 py_test(

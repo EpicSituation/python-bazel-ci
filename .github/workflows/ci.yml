@@ -3,10 +3,10 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - main  # Runs when code is pushed to main
+      - main
   pull_request:
     branches:
-      - main  # Runs on PRs targeting main
+      - main
 
 jobs:
   build-test-lint:
@@ -22,26 +22,18 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.13"
+          python-version: "3.11"
 
-      - name: Install Dependencies
+      - name: Install Dependencies  # Install all required packages
         run: |
-          pip install pylint black pytest
+          pip install --upgrade pip
+          pip install pytest pylint black
 
-#      - name: Run Unit Tests
-#        run: bazel test //tests:test_math_utils //tests:test_string_utils
-      - name: Run Unit Tests
-        run: |
-          bazel test //tests:test_math_utils || (
-            echo "=== TEST LOG START ==="
-            cat /home/runner/.cache/bazel/_bazel_runner/*/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_math_utils/test.log || echo "Log not found"
-            echo "=== TEST LOG END ==="
-            exit 1
-          )
-
-      - name: Run Linter
+      - name: Run Linter  # Runs Pylint
         run: bazel test //:lint
 
-      - name: Run Formatter Check
+      - name: Run Formatter Check  # Runs Black formatting check
         run: bazel test //:format
 
+      - name: Run Unit Tests  # Run Python unit tests
+        run: bazel test //tests:test_math_utils //tests:test_string_utils
