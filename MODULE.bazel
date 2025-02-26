@@ -1,0 +1,8 @@
+module(name = "python_bazel_ci")
+
+bazel_dep(name = "rules_python", version = "0.25.0")
+
+pip_install(
+    name = "python_deps",
+    requirements = "@//:requirements.txt",
+)
