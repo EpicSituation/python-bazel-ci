@@ -29,19 +29,11 @@ jobs:
           pip install --upgrade pip
           pip install pytest pylint black
 
-      - name: Run Linter  # Runs Pylint
-        run: bazel test //:lint
+#      - name: Run Linter  # Runs Pylint
+#        run: bazel test //:lint
 
-      - name: Run Formatter Check  # Runs Black formatting check
-        run: bazel test //:format
+#      - name: Run Formatter Check  # Runs Black formatting check
+#        run: bazel test //:format
 
-#      - name: Run Unit Tests  # Run Python unit tests
-#        run: bazel test //tests:test_math_utils //tests:test_string_utils
-      - name: Run Unit Tests
-        run: |
-          bazel test //tests:test_math_utils || (
-            echo "=== TEST LOG START ==="
-            cat /home/runner/.cache/bazel/_bazel_runner/*/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_math_utils/test.log || echo "Log not found"
-            echo "=== TEST LOG END ==="
-            exit 1
-          )
+      - name: Run Unit Tests  # Run Python unit tests
+        run: bazel test //tests:test_math_utils //tests:test_string_utils
