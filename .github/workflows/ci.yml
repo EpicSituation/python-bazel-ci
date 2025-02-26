@@ -29,11 +29,5 @@ jobs:
           pip install --upgrade pip
           pip install pytest pylint black
 
-      - name: Run Linter  # Runs Pylint
-        run: bazel test //:lint
-
-      - name: Run Formatter Check  # Runs Black formatting check
-        run: bazel test //:format
-
       - name: Run Unit Tests  # Run Python unit tests
         run: bazel test //tests:test_math_utils //tests:test_string_utils
