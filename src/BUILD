@@ -1,3 +1,5 @@
+load("@rules_python//python:defs.bzl", "py_library")
+
 # Define a Python library for math_utils
 py_library(
     name = "math_utils_lib",

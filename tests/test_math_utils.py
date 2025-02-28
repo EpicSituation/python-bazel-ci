@@ -2,7 +2,7 @@
 test_math_utils.py - testing basic mathematical functions.
 """
 
-#import pytest
+import pytest
 import sys
 import os
 
@@ -33,6 +33,5 @@ def test_divide():
     """Testing Divide function."""
     assert divide(6, 2) == 3
     assert divide(5, 2) == 2.5
-    #with pytest.raises(ValueError):
-    #    divide(3, 0)  # Should raise ValueError for division by zero
-    
+    with pytest.raises(ValueError):
+        divide(3, 0)  # Should raise ValueError for division by zero

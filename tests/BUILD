@@ -1,10 +1,12 @@
 # Define a test for math_utils
+load("@rules_python//python:defs.bzl", "py_test")
+
 py_test(
     name = "test_math_utils",
     srcs = ["test_math_utils.py"],
     deps = [
         "//src:math_utils_lib",
-        #"@python_deps//pypi_pytest",
+         "@pip_deps//pytest",
     ],
 
 )
